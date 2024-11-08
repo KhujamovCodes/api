@@ -9,9 +9,15 @@ let users = [];
 
 /**
  * @swagger
+ * tags:
+ *   - name: Auth
+ *     description: Authentication endpoints
+ * 
  * /auth/register:
  *   post:
- *     summary: Foydalanuvchi ro‘yxatdan o‘tishi
+ *     tags:
+ *       - Auth
+ *     summary: Foydalanuvchi ro'yxatdan o'tishi
  *     requestBody:
  *       required: true
  *       content:
@@ -49,8 +55,13 @@ router.post('/register', async (req, res) => {
 
 /**
  * @swagger
+ *  tags:
+ *   - name: Auth
+ *     description: Authentication endpoints
  * /auth/login:
  *   post:
+ *     tags:
+ *       - Auth
  *     summary: Foydalanuvchi tizimga kirishi
  *     requestBody:
  *       required: true

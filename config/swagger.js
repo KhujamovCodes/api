@@ -1,17 +1,18 @@
-// config/swagger.js
-const swaggerJSDoc = require('swagger-jsdoc'); // to'g'ri import
+const swaggerJSDoc = require('swagger-jsdoc');
 
 const swaggerDefinition = {
   openapi: '3.0.0',
-  
+  info: {
+    title: 'Kitoblar API',
+    version: '1.0.0',
+    description: 'Foydalanuvchi va kitoblar bilan ishlash uchun API',
+  },
   servers: [
-
     {
       url: 'http://localhost:3000',
       description: 'Local server',
     },
   ],
-  
   components: {
     securitySchemes: {
       BearerAuth: {
@@ -21,13 +22,20 @@ const swaggerDefinition = {
       },
     },
   },
-  security: [{ BearerAuth: [] }], // Hammasiga umumiy o‘rnatish
+  security: [{ BearerAuth: [] }], // Hammasiga umumiy o'rnatish
+  tags: [
+    {
+      name: 'Auth',
+      description: 'Foydalanuvchi autentifikatsiyasi',
+    },
+  ],
+
 };
 
-// Swagger sozlamalari
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js'], // Yo‘nalishlarni to‘g‘ri ko‘rsating
+  apis: ['./routes/*.js'], // Bu yo‘lda barcha marshrutlar fayllaringiz joylashgan bo'lishi kerak
 };
 
-module.exports = swaggerJSDoc(options); // swaggerJSDoc() funksiyasi bilan qaytish
+const swaggerSpec = swaggerJSDoc(options);
+module.exports = swaggerSpec;

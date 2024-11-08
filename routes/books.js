@@ -10,6 +10,8 @@ const router = express.Router();
  * /books:
  *   get:
  *     summary: Kitoblarni olish
+ *     tags:
+ *       - books
  *     security:
  *       - BearerAuth: []
  *     responses:
@@ -23,6 +25,8 @@ router.get('/', authMiddleware, getBooks);
  * /books/{id}:
  *   get:
  *     summary: Kitobni ID orqali olish
+ *     tags:
+ *       - books
  *     security:
  *       - BearerAuth: []
  *     parameters:
@@ -45,6 +49,8 @@ router.get('/:id', authMiddleware, getBookById);
  * /books:
  *   post:
  *     summary: Yangi kitob yaratish
+ *     tags:
+ *       - books
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -73,6 +79,8 @@ router.post('/', authMiddleware, createBook);
  * /books/{id}:
  *   put:
  *     summary: Kitobni yangilash
+ *     tags:
+ *       - books
  *     security:
  *       - BearerAuth: []
  *     parameters:
@@ -108,6 +116,8 @@ router.put('/:id', authMiddleware, updateBook);
  * /books/{id}:
  *   delete:
  *     summary: Kitobni o'chirish
+ *     tags:
+ *       - books
  *     security:
  *       - BearerAuth: []
  *     parameters:
